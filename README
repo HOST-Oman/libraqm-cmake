@@ -143,7 +143,7 @@ If you want to use the command line (cmd or powershell) to build libraqm, follow
    
    if you want to enable debug mode, unit testing & static build use:
 
-    	cmake -DUNIT_TEST=1 -DWANT_DEBUG=1 -DSTATIC_LIB=1
+    	cmake -DUNIT_TEST=1 -DWANT_DEBUG=1 -DSTATIC_LIB=1 ..
     	
 6- the run build command:
    
