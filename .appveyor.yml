@@ -8,6 +8,7 @@ platform:
 install:
   - cd win
   - git clone https://github.com/HOST-Oman/raqm-dependencies.git
+  - cd raqm-dependencies
   - mkdir build
   - cd build
   - cmake ..
