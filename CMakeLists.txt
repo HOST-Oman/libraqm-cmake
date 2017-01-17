@@ -20,6 +20,10 @@ if(NOT RAQM_INSTALL_INCLUDE_DIR)
   set(RAQM_INSTALL_INCLUDE_DIR "include")
 endif()
 
+if(NOT RAQM_DEPENS_DIR)
+  set(RAQM_DEPENS_DIR "${PROJECT_SOURCE_DIR}/win")
+endif()
+
 set(RAQM_SOURCE_DIR ${CMAKE_SOURCE_DIR})
 
 add_definitions(-DHAVE_CONFIG_H)
@@ -36,11 +40,13 @@ add_definitions(-DHAVE_CONFIG_H)
 
 if( WIN32 AND NOT(MSYS OR CYGWIN OR MINGW) )
 	find_path(FREETYPE_INCLUDE_DIR ft2build.h
-		HINTS ${PROJECT_SOURCE_DIR}/win/include/freetype2
+		HINTS ${RAQM_DEPENS_DIR}/include ${RAQM_DEPENS_DIR}/include/freetype2
 	)
       find_library(FREETYPE_LIBRARIES 
 			NAMES libfreetype-6 freetype libfreetype
-			HINTS ${PROJECT_SOURCE_DIR}/win/lib
+			HINTS ${RAQM_DEPENS_DIR}/lib
+			PATH_SUFFIXES static dynamic
+
 		)
       message("-- Found Freetype: ${FREETYPE_LIBRARIES} ")
 
@@ -68,11 +74,12 @@ set(FRIBIDI_NAMES fribidi libfribidi)
 
 if (WIN32 AND NOT(MSYS OR CYGWIN OR MINGW))
 	find_path( FRIBIDI_INCLUDE_DIR fribidi.h
-		PATH ${PROJECT_SOURCE_DIR}/win/include/fribidi
+		PATH ${RAQM_DEPENS_DIR}/include/fribidi
 	)
 	find_library(FRIBIDI_LIBRARY 
 		NAMES ${FRIBIDI_NAMES}
-		HINTS ${PROJECT_SOURCE_DIR}/win/lib/
+		HINTS ${RAQM_DEPENS_DIR}/lib/
+		PATH_SUFFIXES static dynamic
 		)
 	message("-- Found Fribidi: ${FRIBIDI_LIBRARY} ")
 else()
@@ -127,11 +134,12 @@ endif()
 
 if(WIN32 AND NOT(MSYS OR CYGWIN OR MINGW))
 	find_path(HARFBUZZ_INCLUDE_DIRS hb.h
-		PATH ${PROJECT_SOURCE_DIR}/win/include/harfbuzz
+		PATH ${RAQM_DEPENS_DIR}/include/harfbuzz
 	)
 	find_library(HARFBUZZ_LIBRARIES 
 			NAMES libharfbuzz-0 libharfbuzz harfbuzz libharfbuzzd
-			HINTS ${PROJECT_SOURCE_DIR}/win/lib/
+			HINTS ${RAQM_DEPENS_DIR}/lib/
+			PATH_SUFFIXES static dynamic
 		)
 	message("-- Found Harfbuzz: ${HARFBUZZ_LIBRARIES} ")
 else()
