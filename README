@@ -107,7 +107,8 @@ win/
 ```
 If you do not use the recommended structure you will need to enter paths by hand in CmakeLists.txt. Source and build directories can be located anywhere.
 After building all prerequisite libraries, copy their headers into include directory and their libraries (*.lib) into lib directory. 
-You can use our precompiled dependencies [package](https://sourceforge.net/projects/omlx/files/raqm/raqm-dep-win23-debug-29-12-2016.zip/download "package") if you want just test build libraqm quickly. Please notice that this package is not recommended for production. 
+Now you can use [raqm-dependencies](https://github.com/HOST-Oman/raqm-dependencies) repository to get required libraries, then pass `RAQM_DEPENS_DIR`  
+ 
 #### Building libraqm:
 ##### GUI compilation
 1. Set up a work directory as described above. 
@@ -144,6 +145,9 @@ If you want to use the command line (cmd or powershell) to build libraqm, follow
    if you want to enable debug mode, unit testing & static build use:
 
     	cmake -DUNIT_TEST=1 -DWANT_DEBUG=1 -DSTATIC_LIB=1 ..
+ if you want to specify required libraries directory, pass `RAQM_DEPENS_DIR`  
+
+     cmake -DRAQM_DEPENS_DIR:PATH="the path to raqm-dependencies build folder" ..
     	
 6- the run build command:
    

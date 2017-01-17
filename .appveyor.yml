@@ -7,16 +7,18 @@ platform:
 
 install:
   - cd win
-  - appveyor DownloadFile https://sourceforge.net/projects/omlx/files/raqm/raqm-dep-win23-debug-29-12-2016.zip
-  - ps: Start-FileDownload 'https://github.com/robotology/ycm/releases/download/v0.2.2/YCM-0.2.2-win32.msi'
-  - 7z x raqm-dep-win23-debug-29-12-2016.zip
+  - git clone https://github.com/HOST-Oman/raqm-dependencies.git
+  - mkdir build
+  - cd build
+  - cmake ..
+  - cd ..
   - cd ..
   
 build:
 
 build_script:
   # build the library 
-  - cmake -DUNIT_TEST=1 -DWANT_DEBUG=1 -DSTATIC_LIB=1
+  - cmake -DUNIT_TEST=1 -DWANT_DEBUG=1 -DSTATIC_LIB=1 -DRAQM_DEPENS_DIR:PATH="win/raqm-dependencies/build/dependencies"
   # build the library for Release and Debug
   - cmake --build . --config Debug 
   - ctest -C "Debug"
