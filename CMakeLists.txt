@@ -43,7 +43,7 @@ if( WIN32 AND NOT(MSYS OR CYGWIN OR MINGW) )
 		HINTS ${RAQM_DEPENS_DIR}/include ${RAQM_DEPENS_DIR}/include/freetype2
 	)
       find_library(FREETYPE_LIBRARIES 
-			NAMES libfreetype-6 freetype libfreetype
+			NAMES libfreetype-6 freetype libfreetype freetype_d
 			HINTS ${RAQM_DEPENS_DIR}/lib
 			PATH_SUFFIXES static dynamic
 
@@ -70,7 +70,7 @@ endif(WIN32 AND NOT(MSYS OR CYGWIN OR MINGW))
 #  FRIBIDI_FOUND, If false, do not try to use fribidi.
 # also defined, but not for general use are
 #  FRIBIDI_LIBRARY, where to find the FriBiDi library.
-set(FRIBIDI_NAMES fribidi libfribidi)
+set(FRIBIDI_NAMES fribidi libfribidi fribidi_d)
 
 if (WIN32 AND NOT(MSYS OR CYGWIN OR MINGW))
 	find_path( FRIBIDI_INCLUDE_DIR fribidi.h
@@ -137,7 +137,7 @@ if(WIN32 AND NOT(MSYS OR CYGWIN OR MINGW))
 		PATH ${RAQM_DEPENS_DIR}/include/harfbuzz
 	)
 	find_library(HARFBUZZ_LIBRARIES 
-			NAMES libharfbuzz-0 libharfbuzz harfbuzz libharfbuzzd
+			NAMES libharfbuzz-0 libharfbuzz harfbuzz libharfbuzzd harfbuzz_d
 			HINTS ${RAQM_DEPENS_DIR}/lib/
 			PATH_SUFFIXES static dynamic
 		)
