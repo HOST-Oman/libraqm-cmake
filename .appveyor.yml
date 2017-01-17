@@ -13,8 +13,7 @@ install:
   - cd build
   - cmake ..
   - cmake --build . --config Debug 
-  - cd ..
-  - cd ..
+  - cd ../../../
   
 build:
 
