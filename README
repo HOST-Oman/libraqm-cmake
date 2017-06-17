@@ -96,7 +96,7 @@ For FriBiDi, there is no official way to build it on windows. Fortunately, [Shif
 #### getting Libraqm
 First get the source code using git:
 ```
-git clone https://github.com/HOST-Oman/libraqm.git
+git clone https://github.com/HOST-Oman/libraqm-cmake.git
 ```
 #### preparing  prerequisite libraries:
 To make build process easier, we make assumptions on the directory structure are made to automate the discovery of dependencies. This recommended directory structure is described below:
