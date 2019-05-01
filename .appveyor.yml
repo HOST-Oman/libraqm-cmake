@@ -19,7 +19,7 @@ build:
 
 build_script:
   # build the library 
-  - cmake -DUNIT_TEST=1 -DWANT_DEBUG=1 -DSTATIC_LIB=1 -DRAQM_DEPENS_DIR:PATH="win/raqm-dependencies/build/dependencies"
+  - cmake -DUNIT_TEST=1 -DWANT_DEBUG=1 -DSTATIC_LIB=1 -DRAQM_DEPENS_DIR:PATH="win/raqm-dependencies/build/dependencies" .
   # build the library for Release and Debug
   - cmake --build . --config Debug 
   - ctest -C "Debug"
